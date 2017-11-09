@@ -97,12 +97,12 @@ public class MealsUtil {
             }
         }
 
-        Collection<Stream<MealWithExceed>> values = meals.stream()
+        return meals.stream()
                 .collect(Collectors.groupingBy(Meal::getDate,
-                        Collector.of(Aggregate::new, Aggregate::accumulate, Aggregate::combine, Aggregate::finisher))
-                ).values();
-
-        return values.stream().flatMap(identity()).collect(toList());
+                        Collector.of(Aggregate::new, Aggregate::accumulate, Aggregate::combine, Aggregate::finisher)))
+                .values().stream()
+                .flatMap(identity())
+                .collect(toList());
     }
 
     public static MealWithExceed createWithExceed(Meal meal, boolean exceeded) {
