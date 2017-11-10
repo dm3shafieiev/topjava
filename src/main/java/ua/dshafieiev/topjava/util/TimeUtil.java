@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.util;
+package ua.dshafieiev.topjava.util;
 
 import java.time.LocalTime;
 

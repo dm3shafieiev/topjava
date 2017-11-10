@@ -32,7 +32,11 @@
         }
     </style>
 </head>
-<body>
+<br>
+
+<a href="/mealEditForm.jsp?action=store">Add meal</a>
+
+</br>
 
 <table>
     <tr>
@@ -46,6 +50,8 @@
             <td><c:out value="${meal.description}"/></td>
             <td><c:out value="${parsedDate}"/></td>
             <td><c:out value="${meal.calories}"/></td>
+            <td><a href="/mealEditForm.jsp?action=update&id=${meal.id}">Update</a></td>
+            <td><a href="/meals?action=delete&id=${meal.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>

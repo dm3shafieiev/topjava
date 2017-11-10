@@ -1,6 +1,6 @@
-package ru.javawebinar.topjava.persistance;
+package ua.dshafieiev.topjava.persistance;
 
-import ru.javawebinar.topjava.model.Meal;
+import ua.dshafieiev.topjava.model.Meal;
 
 import java.util.List;
 
@@ -9,11 +9,9 @@ import java.util.List;
  */
 public interface MealRepository {
 
-    Long store(Meal meal);
+    Long storeOrUpdate(Meal meal);
 
     List<Meal> getAll();
-
-    Meal update(Long id);
 
     Meal delete(Long id);
 

@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava;
+package ua.dshafieiev.topjava;
 
 /**
  * @see <a href="http://topjava.herokuapp.com">Demo</a>
