@@ -1,29 +1,37 @@
 package ru.javawebinar.topjava.util;
 
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.model.MealWithExceed;
+import ru.javawebinar.topjava.dto.MealWithExceed;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
 public class MealsUtil {
-    public static final List<Meal> MEALS = Arrays.asList(
-            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500),
-            new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510)
-    );
+    public static final Map<Long, Map<Long, Meal>> MEALS =
+            new HashMap<Long, Map<Long, Meal>>() {
+                {
+                    put(1L, new HashMap<Long, Meal>() {
+                        {
+                            put(1L, new Meal(1L, LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500));
+                            put(2L, new Meal(2L, LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000));
+                            put(3L, new Meal(3L, LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500));
+                        }
+                    });
+                    put(2L, new HashMap<Long, Meal>() {
+                        {
+                            put(4L, new Meal(4L,LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000));
+                            put(5L, new Meal(5L,LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500));
+                            put(6L, new Meal(6L,LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510));
+                        }
+                    });
+                }
+            };
 
     public static final int DEFAULT_CALORIES_PER_DAY = 2000;
 
@@ -45,7 +53,8 @@ public class MealsUtil {
     }
 
     private static MealWithExceed createWithExceed(Meal meal, boolean exceeded) {
-        return new MealWithExceed(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
+        return new MealWithExceed(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(),
+                exceeded);
     }
 
 /*
