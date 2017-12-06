@@ -1,11 +1,18 @@
 package ru.javawebinar.topjava.model;
 
+import javax.persistence.*;
+
+@MappedSuperclass
+@Access(AccessType.FIELD)
 public abstract class AbstractBaseEntity {
     public static final Long START_SEQ = 100000L;
 
+    @Id
+    @SequenceGenerator(name = "global_seq", sequenceName = "global_seq", allocationSize = 1, initialValue = 100000)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "global_seq")
     protected Long id;
 
-    public AbstractBaseEntity() {
+    protected AbstractBaseEntity() {
     }
     protected AbstractBaseEntity(Long id) {
         this.id = id;
